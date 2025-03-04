@@ -56,8 +56,9 @@ public class TpCommand extends Command implements TabCompletable {
                 }
                 //BTW 伺服器專用權限，用於防止玩家惡意TP
                 if (!executor.hasPermission(getPermission("player"))) {
-                    plugin.getLocales().getLocale("error_no_permission")
-                            .ifPresent(executor::sendMessage);
+                    plugin.getCommand(TpRequestCommand.class).get().execute(executor, args);
+                    //plugin.getLocales().getLocale("error_no_permission")
+                    //      .ifPresent(executor::sendMessage);
                     return;
                 }
                 this.execute(executor, user, Target.username(args[0]), args);
