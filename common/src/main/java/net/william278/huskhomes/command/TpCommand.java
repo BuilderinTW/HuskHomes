@@ -54,6 +54,7 @@ public class TpCommand extends Command implements TabCompletable {
                             .ifPresent(executor::sendMessage);
                     return;
                 }
+                //BTW 伺服器專用權限，用於防止玩家惡意TP
                 if (!executor.hasPermission(getPermission("player"))) {
                     plugin.getLocales().getLocale("error_no_permission")
                             .ifPresent(executor::sendMessage);
