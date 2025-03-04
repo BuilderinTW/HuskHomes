@@ -54,6 +54,11 @@ public class TpCommand extends Command implements TabCompletable {
                             .ifPresent(executor::sendMessage);
                     return;
                 }
+                if (!executor.hasPermission(getPermission("player"))) {
+                    plugin.getLocales().getLocale("error_no_permission")
+                            .ifPresent(executor::sendMessage);
+                    return;
+                }
                 this.execute(executor, user, Target.username(args[0]), args);
             }
             case 2 -> this.execute(executor, Teleportable.username(args[0]), Target.username(args[1]), args);
